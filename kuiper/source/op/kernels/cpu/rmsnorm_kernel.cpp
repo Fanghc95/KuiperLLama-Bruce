@@ -4,10 +4,11 @@ namespace kernel {
 void rmsnorm_kernel_cpu(const tensor::Tensor& input, const tensor::Tensor& weight,
                         const tensor::Tensor& output, void* stream) {
   UNUSED(stream);
+  // 参数检查
   CHECK(!input.is_empty());
   CHECK(!weight.is_empty());
   CHECK(!output.is_empty());
-
+  // 检查是否为CPU类型
   CHECK(input.device_type() == base::DeviceType::kDeviceCPU &&
         weight.device_type() == base::DeviceType::kDeviceCPU &&
         output.device_type() == base::DeviceType::kDeviceCPU);
